@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Второй этап: инвентаризация для первого управленческого баланса</title>
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --navy: #102a43;
+      --blue: #1d4ed8;
+      --blue-soft: #eef5ff;
+      --emerald: #047857;
+      --emerald-soft: #ecfdf3;
+      --gold: #b8860b;
+      --gold-soft: #fff7df;
+      --warning: #b45309;
+      --warning-soft: #fff7ed;
+      --line: #e4e9f1;
+      --soft: #f4f7fb;
+      --shadow: 0 18px 45px rgba(16, 42, 67, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.09), transparent 36%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 520px);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 22px 56px;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 52px;
+      border-radius: var(--radius-xl);
+      color: #ffffff;
+      background:
+        linear-gradient(135deg, rgba(16, 42, 67, 0.98), rgba(23, 32, 51, 0.96)),
+        radial-gradient(circle at 84% 14%, rgba(184, 134, 11, 0.42), transparent 33%);
+      box-shadow: var(--shadow);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      right: -140px;
+      bottom: -170px;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: #dbeafe;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(184, 134, 11, 0.18);
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 24px 0 0;
+      color: #d7e3f4;
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    .cover-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .cover-card {
+      min-height: 120px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .cover-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .cover-card span {
+      color: #bfd0e5;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    nav {
+      margin: 30px 0;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    nav h2 {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -0.025em;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .toc a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfcfe;
+      color: var(--navy);
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      border-color: #bfdbfe;
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    main {
+      display: block;
+    }
+
+    section {
+      margin: 26px 0;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: 0 10px 28px rgba(16, 42, 67, 0.045);
+    }
+
+    section section {
+      margin: 24px 0 0;
+      padding: 24px;
+      border-radius: 18px;
+      background: #fbfcfe;
+      box-shadow: none;
+    }
+
+    h2,
+    h3,
+    h4 {
+      color: var(--navy);
+      line-height: 1.22;
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      font-size: clamp(26px, 3vw, 36px);
+      letter-spacing: -0.035em;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 76px;
+      height: 4px;
+      margin-top: 14px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--gold), var(--blue), var(--emerald));
+    }
+
+    h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      letter-spacing: -0.025em;
+    }
+
+    h4 {
+      margin: 20px 0 10px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 16px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .lead {
+      color: #344054;
+      font-size: 18px;
+    }
+
+    .highlight,
+    .principle,
+    .result,
+    .checklist,
+    .warning {
+      margin: 20px 0;
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid;
+      position: relative;
+    }
+
+    .highlight {
+      background: var(--blue-soft);
+      border-color: #bfdbfe;
+    }
+
+    .principle {
+      background: var(--gold-soft);
+      border-color: #fde68a;
+    }
+
+    .result {
+      background: var(--emerald-soft);
+      border-color: #bbf7d0;
+    }
+
+    .checklist {
+      background: #f8fafc;
+      border-color: var(--line);
+    }
+
+    .warning {
+      background: var(--warning-soft);
+      border-color: #fed7aa;
+    }
+
+    .block-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .highlight .block-title {
+      color: var(--blue);
+    }
+
+    .principle .block-title {
+      color: var(--gold);
+    }
+
+    .result .block-title {
+      color: var(--emerald);
+    }
+
+    .checklist .block-title {
+      color: var(--navy);
+    }
+
+    .warning .block-title {
+      color: var(--warning);
+    }
+
+    .block-title::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .info-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .info-card.accent-blue {
+      border-color: #bfdbfe;
+      background: #f5f9ff;
+    }
+
+    .info-card.accent-emerald {
+      border-color: #bbf7d0;
+      background: #f4fdf8;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 18px 0 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 15px;
+    }
+
+    caption {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfe;
+      color: var(--muted);
+      text-align: left;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    th {
+      background: linear-gradient(180deg, #eef5ff, #e9f1ff);
+      color: var(--navy);
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fbfdff;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .wide-table table {
+      min-width: 1080px;
+    }
+
+    .step-plan {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .step-item {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #ffffff, #fbfcfe);
+    }
+
+    .step-item::before {
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(16, 42, 67, 0.18);
+    }
+
+    .step-item h4 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .step-meta {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .step-result {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--emerald-soft);
+      color: #065f46;
+      font-weight: 800;
+    }
+
+    .result-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .result-list li {
+      margin: 0;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #ffffff;
+      font-weight: 700;
+    }
+
+    .result-list li::before {
+      content: "✓";
+      margin-right: 8px;
+      color: var(--emerald);
+      font-weight: 900;
+    }
+
+    .criteria {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .criteria-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #ffffff;
+    }
+
+    .criteria-item::before {
+      content: "□";
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .final-accent {
+      padding: 34px;
+      border: none;
+      color: #ffffff;
+      background:
+        linear-gradient(135deg, rgba(16, 42, 67, 0.98), rgba(29, 78, 216, 0.86)),
+        radial-gradient(circle at 88% 20%, rgba(184, 134, 11, 0.34), transparent 33%);
+    }
+
+    .final-accent h2,
+    .final-accent p {
+      color: #ffffff;
+    }
+
+    .final-accent h2::after {
+      background: linear-gradient(90deg, #facc15, #93c5fd, #6ee7b7);
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      background: #101828;
+      color: #d0d5dd;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 38px 28px;
+        border-radius: 22px;
+      }
+
+      .cover-grid,
+      .card-grid,
+      .result-list,
+      .criteria,
+      .toc {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 26px 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 15px;
+      }
+
+      .page {
+        padding: 18px 12px 38px;
+      }
+
+      header {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 33px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+
+      h3 {
+        font-size: 21px;
+      }
+
+      nav,
+      section {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .highlight,
+      .principle,
+      .result,
+      .checklist,
+      .warning {
+        padding: 18px;
+      }
+
+      .step-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      :root {
+        --shadow: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      body {
+        background: #ffffff;
+        color: #111827;
+        font-size: 11.5pt;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      header,
+      nav,
+      section,
+      footer {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      header {
+        padding: 28pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-after: avoid;
+      }
+
+      nav {
+        page-break-after: always;
+      }
+
+      section {
+        margin: 0 0 18pt;
+        padding: 18pt 0;
+        border: none;
+        border-top: 1px solid #d0d5dd;
+        page-break-inside: avoid;
+      }
+
+      section section {
+        padding: 14pt;
+        border: 1px solid #e5e7eb;
+        page-break-inside: avoid;
+      }
+
+      h2,
+      h3,
+      h4 {
+        page-break-after: avoid;
+      }
+
+      .table-wrap {
+        overflow: visible;
+        border-radius: 0;
+        page-break-inside: avoid;
+      }
+
+      table {
+        min-width: 0;
+        font-size: 9.3pt;
+      }
+
+      th,
+      td {
+        padding: 7pt;
+      }
+
+      .highlight,
+      .principle,
+      .result,
+      .checklist,
+      .warning,
+      .info-card,
+      .step-item,
+      .criteria-item,
+      .result-list li {
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      footer {
+        color: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">Второй этап · Первый управленческий баланс</div>
+      <h1>Второй этап: инвентаризация для первого управленческого баланса</h1>
+      <p class="subtitle">Диагностика и запуск управленческого учета</p>
+
+      <div class="cover-grid">
+        <div class="cover-card">
+          <strong>Цель</strong>
+          <span>Собрать достоверную финансовую «фотографию» бизнеса на конкретную дату.</span>
+        </div>
+        <div class="cover-card">
+          <strong>Фокус</strong>
+          <span>Активы, обязательства, капитал собственника, спорные зоны и неподтвержденные данные.</span>
+        </div>
+        <div class="cover-card">
+          <strong>Метод</strong>
+          <span>Все данные собираются на одну утвержденную дату инвентаризации.</span>
+        </div>
+        <div class="cover-card">
+          <strong>Результат</strong>
+          <span>Первый управленческий баланс как стартовая точка учета.</span>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <h2>Навигация по отчету</h2>
+      <ul class="toc">
+        <li><a href="#goal">1. Цель и результат этапа</a></li>
+        <li><a href="#principle">2. Ключевой принцип</a></li>
+        <li><a href="#balance">3. Что собираем в баланс</a></li>
+        <li><a href="#plan">4. Пошаговый план запуска</a></li>
+        <li><a href="#control">5. Контрольные результаты этапа</a></li>
+        <li><a href="#criteria">6. Критерии готовности этапа</a></li>
+        <li><a href="#final">7. Основной итог второго этапа</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="goal">
+        <h2>1. Цель и результат этапа</h2>
+
+        <div class="highlight">
+          <div class="block-title">Цель этапа</div>
+          <p>
+            Задача второго этапа — собрать первую достоверную финансовую «фотографию»
+            бизнеса на конкретную дату.
+          </p>
+        </div>
+
+        <p>На этом этапе необходимо:</p>
+
+        <ul>
+          <li>показать, что есть у бизнеса;</li>
+          <li>показать, где находятся деньги бизнеса;</li>
+          <li>оценить деньги, вложенные в товар, сырье, упаковку и партии;</li>
+          <li>зафиксировать долги, кредиты, налоги и обязательства;</li>
+          <li>выделить авансы, дебиторку, неликвиды и тестовые партии;</li>
+          <li>рассчитать капитал собственника как активы минус обязательства.</li>
+        </ul>
+
+        <div class="result">
+          <div class="block-title">Финальный результат этапа</div>
+          <p>
+            Первый управленческий баланс на утвержденную дату инвентаризации.
+            Баланс показывает не только деньги на счетах, а всю стоимость бизнеса:
+            деньги, товар, сырье, авансы, долги, кредиты и капитал собственника.
+          </p>
+        </div>
+      </section>
+
+      <section id="principle">
+        <h2>2. Ключевой принцип</h2>
+
+        <div class="principle">
+          <div class="block-title">Ключевой принцип</div>
+          <p>
+            Все данные собираются на одну дату. Нельзя брать банк на одну дату,
+            остатки WB на другую, «МойСклад» на третью, а долги поставщикам —
+            «примерно на сегодня». Такой баланс будет недостоверным.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Решения по дате и качеству данных</caption>
+            <thead>
+              <tr>
+                <th>Решение</th>
+                <th>Рекомендуемый подход</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Утвердить дату инвентаризации</strong></td>
+                <td>Последнее число месяца: например 31.05.2026.</td>
+              </tr>
+              <tr>
+                <td><strong>Фиксировать расхождения</strong></td>
+                <td>Если данные собраны на другую дату, это указывается отдельной пометкой.</td>
+              </tr>
+              <tr>
+                <td><strong>Не заменять неизвестное предположениями</strong></td>
+                <td>Если данных нет, пишем «данных нет» и ставим задачу на подтверждение.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning">
+          <div class="block-title">Важное ограничение</div>
+          <p>
+            Если часть данных собрана на разные даты или заменена приблизительными оценками,
+            такой баланс нельзя считать достоверной стартовой точкой учета.
+          </p>
+        </div>
+      </section>
+
+      <section id="balance">
+        <h2>3. Что собираем в баланс</h2>
+
+        <div class="card-grid">
+          <div class="info-card accent-blue">
+            <strong>Активы</strong>
+            Это все, что есть у бизнеса и имеет экономическую стоимость: деньги, товар,
+            сырье, упаковка, авансы, дебиторка, тестовые партии и неликвиды.
+          </div>
+
+          <div class="info-card accent-emerald">
+            <strong>Обязательства</strong>
+            Это все, что бизнес должен: поставщикам, производителям, логистике, команде,
+            налоговой, банкам, рекламным подрядчикам и другим сторонам.
+          </div>
+        </div>
+
+        <section>
+          <h3>3.1. Активы: что есть у бизнеса</h3>
+
+          <div class="table-wrap">
+            <table>
+              <caption>Состав активов для первого управленческого баланса</caption>
+              <thead>
+                <tr>
+                  <th>Активы: что есть у бизнеса</th>
+                  <th>Что включаем</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Деньги</strong></td>
+                  <td>Все расчетные счета, карты, наличные, если использовались в бизнесе.</td>
+                </tr>
+                <tr>
+                  <td><strong>Товары на WB</strong></td>
+                  <td>Готовая продукция на складах Wildberries по SKU и регионам.</td>
+                </tr>
+                <tr>
+                  <td><strong>Товары в пути</strong></td>
+                  <td>Отгружено, но еще не принято WB.</td>
+                </tr>
+                <tr>
+                  <td><strong>Товары на фулфилменте</strong></td>
+                  <td>Например, сыворотки до передачи на WB.</td>
+                </tr>
+                <tr>
+                  <td><strong>Сырье и упаковка</strong></td>
+                  <td>Компоненты, масла, тара, этикетки, крышки, мембраны, буклеты, коробки.</td>
+                </tr>
+                <tr>
+                  <td><strong>Остатки у производителей</strong></td>
+                  <td>Рубен, Елец / Технофарм, Жива продукт.</td>
+                </tr>
+                <tr>
+                  <td><strong>Авансы</strong></td>
+                  <td>Предоплаты поставщикам, производителям, подрядчикам.</td>
+                </tr>
+                <tr>
+                  <td><strong>Дебиторка</strong></td>
+                  <td>Кто должен бизнесу деньги или товар.</td>
+                </tr>
+                <tr>
+                  <td><strong>Тестовые партии и неликвиды</strong></td>
+                  <td>Живопродукт, сыворотки, Инозитол, Берберин, шубы, слабые SKU.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h3>3.2. Обязательства: кому бизнес должен</h3>
+
+          <div class="table-wrap">
+            <table>
+              <caption>Состав обязательств для первого управленческого баланса</caption>
+              <thead>
+                <tr>
+                  <th>Обязательства: кому бизнес должен</th>
+                  <th>Что включаем</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Поставщики и производители</strong></td>
+                  <td>Неоплаченные счета за сырье, упаковку, товар, работы Рубена, Ельца / Технофарма, Живопродукта.</td>
+                </tr>
+                <tr>
+                  <td><strong>Логистика</strong></td>
+                  <td>ПЭК, Деловые линии, СДЭК и другие перевозчики.</td>
+                </tr>
+                <tr>
+                  <td><strong>Реклама</strong></td>
+                  <td>Блогеры, Telegram, подрядчики, ОРД, другая внешняя реклама.</td>
+                </tr>
+                <tr>
+                  <td><strong>Команда</strong></td>
+                  <td>Зарплаты, KPI, бонусы, подрядчики, компенсации.</td>
+                </tr>
+                <tr>
+                  <td><strong>Налоги</strong></td>
+                  <td>Начисленные и ожидаемые налоги, ЕНС, НДС 5%, УСН.</td>
+                </tr>
+                <tr>
+                  <td><strong>Кредиты и займы</strong></td>
+                  <td>Основной долг, проценты, комиссии, просрочки.</td>
+                </tr>
+                <tr>
+                  <td><strong>Неразобранные операции</strong></td>
+                  <td>Платежи без понятного назначения до расшифровки.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="plan">
+        <h2>4. Пошаговый план запуска второго этапа</h2>
+
+        <div class="warning">
+          <div class="block-title">Требование к запасам</div>
+          <p>
+            Все запасы должны быть представлены по точным номенклатурным наименованиям,
+            по количеству и цене. Цена — это покупная стоимость на основании документов поставщиков.
+          </p>
+        </div>
+
+        <div class="table-wrap wide-table">
+          <table>
+            <caption>Пошаговый план запуска второго этапа</caption>
+            <thead>
+              <tr>
+                <th>Шаг</th>
+                <th>Ответственные</th>
+                <th>Содержание и результат</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Запуск инвентаризации</strong></td>
+                <td>Собственник / Project Manager</td>
+                <td>Объяснить команде цель инвентаризации, утвердить состав данных, ответственных, сроки и формат файлов. Результат: команда понимает задачу и зоны ответственности.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Утвердить дату первого баланса</strong></td>
+                <td>Собственник, финансовый директор</td>
+                <td>Зафиксировать дату инвентаризации и запретить смешивание данных разных дат без отдельной пометки. Результат: утверждена дата баланса.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Собрать деньги</strong></td>
+                <td>Собственник / Project Manager / бухгалтер</td>
+                <td>Выгрузить выписки по всем счетам, подтвердить остатки, выделить WB, внутренние переводы, собственника, СБП, QR, кредиты, налоги и нераспознанное. Результат: реестр денежных средств.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Собрать остатки товаров на WB</strong></td>
+                <td>Назначить</td>
+                <td>Выгрузить остатки WB по SKU, сверить карточки и артикулы, выделить регионы, дефициты, излишки, товары на приемке и расхождения. Результат: реестр товаров WB в разрезе номенклатур, количества, стоимости.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Собрать товары в пути и незакрытые поставки</strong></td>
+                <td>Назначить</td>
+                <td>Проверить отгрузки, приемку, расхождения, статусы, стоимость перевозки, транспортные документы и номера поставок WB. Результат: отчет по незакрытым поставкам в разрезе номенклатур, количества, стоимости.</td>
+              </tr>
+              <tr>
+                <td><strong>6. Собрать сырье, упаковку и комплектующие</strong></td>
+                <td>Назначить</td>
+                <td>Выгрузить «МойСклад» на дату баланса, выделить сырье для дезодорантов, комплектующие для хлорофилла, материалы под Жива продукт, сыворотки и спорные остатки. Результат: реестр сырья и упаковки в разрезе номенклатур, количества, стоимости.</td>
+              </tr>
+              <tr>
+                <td><strong>7. Подтвердить остатки у Рубена</strong></td>
+                <td>Назначить</td>
+                <td>Запросить сколько сырья получил, израсходовал, выпустил продукции, сколько осталось, есть ли брак и какие документы готовы. Результат: акт / отчет по остаткам у Рубена.</td>
+              </tr>
+              <tr>
+                <td><strong>8. Подтвердить Елец / Технофарм</strong></td>
+                <td>Назначить</td>
+                <td>Собрать выпущенные партии хлорофилла, остатки комплектующих, переданные материалы, УПД, допсоглашения, акты, маркировку и готовую продукцию. Результат: реестр партий и остатков.</td>
+              </tr>
+              <tr>
+                <td><strong>9. Подтвердить Жива продукт</strong></td>
+                <td>Назначить</td>
+                <td>Подтвердить статус партии, счета, договоры, спецификации, авансы, расходы на этикетки, коробки, буклеты и логистику. Результат: карточка проекта «Жива продукт».</td>
+              </tr>
+              <tr>
+                <td><strong>10. Собрать фулфилмент и сыворотки</strong></td>
+                <td>Назначить</td>
+                <td>Собрать количество сывороток, статус декларации, себестоимость, расходы на фулфилмент, документы и готовность к WB. Результат: реестр товаров на фулфилменте.</td>
+              </tr>
+              <tr>
+                <td><strong>11. Выделить тестовые и выводимые товары</strong></td>
+                <td>Назначить</td>
+                <td>Отдельно показать Инозитол, Берберин, сыворотки, Жива продукт, шубы и слабые SKU. Результат: реестр тестовых и выводимых направлений.</td>
+              </tr>
+              <tr>
+                <td><strong>12. Собрать себестоимость для оценки запасов</strong></td>
+                <td>Назначить</td>
+                <td>Подтвердить первичной документацией себестоимость хлорофилла, Жива продукта и дезодорантов по ароматам; отметить фактическую и неподтвержденную себестоимость. Результат: регистр себестоимости.</td>
+              </tr>
+              <tr>
+                <td><strong>13. Собрать авансы</strong></td>
+                <td>Назначить</td>
+                <td>Определить оплаты, по которым товар или услуга еще не получены: производители, сырье, упаковка, логистика, реклама, фулфилмент, сервисы, Жива продукт. Результат: реестр авансов.</td>
+              </tr>
+              <tr>
+                <td><strong>14. Собрать дебиторку</strong></td>
+                <td>Назначить</td>
+                <td>Проверить ожидаемые перечисления WB, компенсации, переплаты поставщикам, возвраты, спорные суммы. Результат: реестр дебиторской задолженности.</td>
+              </tr>
+              <tr>
+                <td><strong>15. Собрать кредиторку</strong></td>
+                <td>Назначить</td>
+                <td>Собрать неоплаченные обязательства по сырью, упаковке, производствам, логистике, рекламе, ФОТ, KPI, налогам и документам. Результат: реестр кредиторской задолженности.</td>
+              </tr>
+              <tr>
+                <td><strong>16. Собрать кредиты и займы</strong></td>
+                <td>Назначить</td>
+                <td>Собрать договоры, графики, остаток основного долга, проценты, комиссии, займы полученные и выданные. Результат: реестр кредитов и займов.</td>
+              </tr>
+              <tr>
+                <td><strong>17. Собрать налоговые обязательства</strong></td>
+                <td>Назначить</td>
+                <td>Собрать начисленные и уплаченные налоги, ЕНП, НДС 5%, УСН, переплату или задолженность ФНС, ожидаемые налоги. Результат: налоговый блок баланса.</td>
+              </tr>
+              <tr>
+                <td><strong>18. Собрать расходы и обязательства по рекламе</strong></td>
+                <td>Назначить</td>
+                <td>По каждому размещению указать канал, подрядчика, сумму, дату, SKU, оплату, документы, ОРД, акт / чек / договор, бартер и физлиц. Результат: реестр рекламы.</td>
+              </tr>
+              <tr>
+                <td><strong>19. Собрать ФОТ, KPI и выплаты</strong></td>
+                <td>Назначить</td>
+                <td>Собрать сотрудников и исполнителей, оклады, KPI, бонусы, начислено, выплачено, долги, статус оформления, выплаты через карты, СБП, QR. Результат: реестр ФОТ.</td>
+              </tr>
+              <tr>
+                <td><strong>20. Сформировать первый баланс</strong></td>
+                <td>Финансовый директор</td>
+                <td>Собрать активы, обязательства и капитал собственника на основании предоставленных реестров. Результат: первый управленческий баланс на дату инвентаризации.</td>
+              </tr>
+              <tr>
+                <td><strong>22. Утвердить первый баланс</strong></td>
+                <td>Финансовый директор, Собственник</td>
+                <td>Презентовать активы, обязательства, капитал и спорные зоны. Результат: утвержденная стартовая финансовая точка бизнеса.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="step-plan">
+          <div class="step-item">
+            <div>
+              <h4>Запуск и дата баланса</h4>
+              <div class="step-meta">Собственник · Project Manager · Финансовый директор</div>
+              <p>Команда получает единое понимание цели, состава данных, сроков, ответственных и даты инвентаризации.</p>
+              <div class="step-result">Результат: утверждена дата первого баланса и правила сбора данных.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div>
+              <h4>Сбор активов</h4>
+              <div class="step-meta">Назначенные ответственные по участкам</div>
+              <p>Собираются деньги, товары WB, товары в пути, фулфилмент, сырье, упаковка, остатки у производителей, тестовые партии и неликвиды.</p>
+              <div class="step-result">Результат: полная карта активов бизнеса на дату инвентаризации.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div>
+              <h4>Сбор обязательств</h4>
+              <div class="step-meta">Назначенные ответственные · Финансовый директор</div>
+              <p>Собираются кредиторка, кредиты, займы, налоги, обязательства по рекламе, ФОТ, KPI и неразобранные операции.</p>
+              <div class="step-result">Результат: полная карта долгов и обязательств бизнеса.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div>
+              <h4>Формирование и утверждение баланса</h4>
+              <div class="step-meta">Финансовый директор · Собственник</div>
+              <p>Активы и обязательства собираются в первый управленческий баланс, выделяются спорные зоны и неподтвержденные данные.</p>
+              <div class="step-result">Результат: утвержденная стартовая финансовая точка бизнеса.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="control">
+        <h2>5. Контрольные результаты этапа</h2>
+
+        <div class="result">
+          <div class="block-title">Контрольные результаты</div>
+          <p>
+            На выходе второго этапа должны быть подготовлены реестры, которые подтверждают
+            активы, обязательства и капитал собственника на дату инвентаризации.
+          </p>
+        </div>
+
+        <ul class="result-list">
+          <li>реестр остатков денежных средств;</li>
+          <li>реестр остатков товаров WB;</li>
+          <li>реестр остатков товаров в пути;</li>
+          <li>реестр остатков товаров на фулфилменте;</li>
+          <li>реестр остатков сырья и упаковки;</li>
+          <li>реестры остатков у Рубена, Ельца / Технофарма и Живопродукта;</li>
+          <li>реестр остатков тестовых партий и неликвидов;</li>
+          <li>реестр авансов, дебиторки и кредиторки на дату инвентаризации;</li>
+          <li>реестр задолженности по кредитам и займам на дату инвентаризации;</li>
+          <li>реестр задолженности по налогам;</li>
+          <li>реестр задолженности по внешней рекламе;</li>
+          <li>реестр задолженности по ФОТ;</li>
+          <li>первый управленческий баланс.</li>
+        </ul>
+      </section>
+
+      <section id="criteria">
+        <h2>6. Критерии готовности этапа</h2>
+
+        <div class="checklist">
+          <div class="block-title">Чек-лист критериев готовности</div>
+          <p>
+            Этап считается готовым только после того, как подтверждены ключевые данные
+            для первого управленческого баланса.
+          </p>
+
+          <div class="criteria">
+            <div class="criteria-item">Дата баланса утверждена.</div>
+            <div class="criteria-item">Все активы собраны и оценены.</div>
+            <div class="criteria-item">Все обязательства собраны.</div>
+            <div class="criteria-item">Остатки WB подтверждены.</div>
+            <div class="criteria-item">Остатки «МойСклад» выгружены.</div>
+            <div class="criteria-item">Производители дали данные или отмечены как неподтвержденные.</div>
+            <div class="criteria-item">Банк классифицирован.</div>
+            <div class="criteria-item">Авансы отделены от расходов.</div>
+            <div class="criteria-item">Кредиты отделены от выручки.</div>
+            <div class="criteria-item">Нераспознанные операции вынесены отдельно.</div>
+            <div class="criteria-item">Собственник увидел активы, обязательства и капитал.</div>
+            <div class="criteria-item">Первый баланс утвержден как стартовая точка учета.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="final" class="final-accent">
+        <h2>7. Основной итог второго этапа</h2>
+
+        <p class="lead">
+          Это не просто таблица остатков, а стартовая финансовая точка бизнеса.
+        </p>
+
+        <p>
+          После утверждения первого баланса можно корректно запускать регулярные PnL,
+          ДДС, платежный календарь, отчет по SKU и ОСНО-модель.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Управленческий учет · Первый баланс · Инвентаризация
+    </footer>
+  </div>
+</body>
+</html>
